@@ -1,6 +1,11 @@
 import ui from "./ui.js"
 import api from "./api.js"
 
+const botaoCancelar = document.getElementById("botao-cancelar");
+const pensamentoConteudoInput = document.getElementById("pensamento-conteudo");
+const pensamentoAutoriaInput = document.getElementById("pensamento-autoria");
+
+
 document.addEventListener("DOMContentLoaded", () => {
     ui.renderizarPensamentos();
 
@@ -22,3 +27,8 @@ async function manipularSubimissaoForm(event) {
         alert("Erro ao salvar pensamento!");
     }
 }
+
+botaoCancelar.addEventListener("click", () => {
+    pensamentoConteudoInput.value = "";
+    pensamentoAutoriaInput.value = "";
+})
