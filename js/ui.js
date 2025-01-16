@@ -13,7 +13,7 @@ const ui = {
         }
     },
 
-    adicionarPensamentoNalista() {
+    adicionarPensamentoNalista(pensamento) {
         const listaPensamentos = document.getElementById("lista-pensamentos");
         const li = document.createElement("li");
         li.setAttribute("data-id", pensamento.id);
