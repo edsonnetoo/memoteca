@@ -4,9 +4,9 @@ const ui = {
 
     async preencherFormulario(pensamnetoId) {
         const pensamento = await api.buscarPensamentoPorId(pensamnetoId);
-        document.getElementById("pensamneto-id").value = pensamento.id;
-        document.getElementById("pensamneto-conteudo").value = pensamento.conteudo;
-        document.getElementById("pensamneto-autoria").value = pensamento.autoria;
+        document.getElementById("pensamento-id").value = pensamento.id;
+        document.getElementById("pensamento-conteudo").value = pensamento.conteudo;
+        document.getElementById("pensamento-autoria").value = pensamento.autoria;
     },
 
     async renderizarPensamentos() {
