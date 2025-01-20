@@ -16,6 +16,10 @@ const ui = {
         try {
             const pensamentos = await api.buscarPensamentos();
             pensamentos.forEach(ui.adicionarPensamentoNalista);
+            console.log("Teste", pensamentos)
+            if (pensamentos.length === 0) {
+                document.getElementById("lista-pensamentos-vazia").classList.toggle('hidden');
+            }
         } 
         catch (error) {
             

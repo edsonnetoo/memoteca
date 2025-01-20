@@ -282,3 +282,20 @@ span {
   background: #041832;
   margin: 96px 0 48px 0;
 }
+
+.lista-pensamentos-vazia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.lista-pensamentos-vazia p {
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--Azul-Dark);
+}
+
+.hidden {
+  display: none;
+}
