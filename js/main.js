@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ui.renderizarPensamentos();
 
     const formularioPensamento = document.getElementById("pensamento-form");
+    const inputBusca = document.getElementById("campo-busca");
+
+    inputBusca.addEventListener("input", manipularBusca);
     formularioPensamento.addEventListener("submit", manipularSubimissaoForm)
 });
 
@@ -30,6 +33,17 @@ async function manipularSubimissaoForm(event) {
     } 
     catch (error) {
         alert("Erro ao salvar pensamento!");
+    }
+}
+
+async function manipularBusca() {
+    const termoBusca = document.getElementById("campo-busca").value;
+    try {
+        const pensamentosFiltrados = await api.buscarPensamentosPorTermo(termoBusca);
+        ui.renderizarPensamentos(pensamentosFiltrados);
+        console.log("oi", pensamentosFiltrados);
+    } catch (error) {
+        alert("Erro ao realizar busca");
     }
 }
 
