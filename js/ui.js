@@ -9,16 +9,27 @@ const ui = {
         document.getElementById("pensamento-autoria").value = pensamento.autoria;
     },
 
-    async renderizarPensamentos() {
+    async renderizarPensamentos(pensamentosFiltrados = null) {
         const listaPensamentos = document.getElementById("lista-pensamentos");
+        const mensagemVazia = document.getElementById("lista-pensamentos-vazia");
         listaPensamentos.innerHTML = ""
 
         try {
-            const pensamentos = await api.buscarPensamentos();
-            pensamentos.forEach(ui.adicionarPensamentoNalista);
-            if (pensamentos.length === 0) {
-                document.getElementById("lista-pensamentos-vazia").classList.toggle('hidden');
+            let pensamentoParaRenderizar;
+
+            if(pensamentosFiltrados) {
+                pensamentoParaRenderizar = pensamentosFiltrados;
+            } else {
+                pensamentoParaRenderizar = await api.buscarPensamentos();
             }
+            
+            if (pensamentoParaRenderizar.length === 0) {
+                mensagemVazia.style.display = "block"
+            } else {
+                mensagemVazia.style.display = "none";
+                pensamentoParaRenderizar.forEach(ui.adicionarPensamentoNalista);
+            }
+            
         } 
         catch (error) {
             
