@@ -75,6 +75,14 @@ const ui = {
 
         const botaoFavorito = document.createElement("button");
         botaoFavorito.classList.add("botao-favorito");
+        botaoFavorito.onclick = async () => {
+            try {
+                api.atualizarFavorito(pensamento.id, !pensamento.favorito);
+                ui.renderizarPensamentos()
+            } catch (error) {
+                alert("Erro ao atualizar pensamento");
+            }
+        }
 
         const iconeEditar = document.createElement("img");
         iconeEditar.src = "assets/imagens/icone-editar.png";
@@ -87,7 +95,7 @@ const ui = {
         botaoExcluir.appendChild(iconeExcluir);
 
         const iconeFavorito = document.createElement("img");
-        iconeFavorito.src = "assets/imagens/icone-favoritar.svg"
+        iconeFavorito.src = pensamento.favorito ? "assets/imagens/favorite.png" : "assets/imagens/favorite_outline.png";
         iconeFavorito.alt = "favoritar";
         botaoFavorito.appendChild(iconeFavorito);
 

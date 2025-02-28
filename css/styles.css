@@ -271,10 +271,10 @@ h2, h3 {
   margin-left: 8px;
 }
 
-.botao-editar img, .botao-excluir img {
+/* .botao-editar img, .botao-excluir img, .botao-favorito img {
   width: 20px;
   height: 20px;
-}
+} */
 
 span {
   width: 180px;
