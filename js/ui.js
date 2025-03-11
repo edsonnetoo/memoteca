@@ -65,8 +65,9 @@ const ui = {
         }
 
         const dataFormatada = pensamento.data.toLocaleDateString('pt-BR', options);
+        const dataRegex = dataFormatada.replace(/^(\w)/, (match) => match.toUpperCase()); // Coloca o primeiro parametro Maiusculo com REGEX
 
-        pensamentoData.textContent = dataFormatada;
+        pensamentoData.textContent = dataRegex;
         pensamentoData.classList.add("pensamento-data");
 
         const pensamentoConteudo = document.createElement("div");

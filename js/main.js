@@ -1,6 +1,21 @@
 import ui from "./ui.js"
 import api from "./api.js"
 
+function removerEspacos(string) {
+    return string.replaceAll(/\s+/g, '');
+}
+
+const regexConteudo = /^[A-Za-z\s]{10,}$/
+const regexAutoria = /^[A-Za-z]{3,15}$/
+
+function validarConteudo(conteudo) {
+    return regexConteudo.test(conteudo);
+}
+
+function validarAutoria(autoria) {
+    return regexAutoria.test(autoria);
+}
+
 const botaoCancelar = document.getElementById("botao-cancelar");
 const pensamentoConteudoInput = document.getElementById("pensamento-conteudo");
 const pensamentoAutoriaInput = document.getElementById("pensamento-autoria");
@@ -22,6 +37,20 @@ async function manipularSubimissaoForm(event) {
     const conteudo = document.getElementById("pensamento-conteudo").value;
     const autoria = document.getElementById("pensamento-autoria").value;
     const data = document.getElementById("pensamento-data").value;
+
+    const conteudoSemEspacos = removerEspacos(conteudo);
+    const autoriaSemEspacos = removerEspacos(autoria);
+
+
+    if(!validarConteudo(conteudoSemEspacos)) {
+        alert("É permitida a inclusão apenas de letras e espaços com no minímo 10 caracteres");
+        return
+    }
+
+    if(!validarAutoria(autoriaSemEspacos)) {
+        alert("É permitida a inclusão de autoria com no minimo 3 caracteres e sem espaços");
+        return
+    }
 
     if(!validarData(data)) {
         alert("Não é permitido o cadastro de datas futuras");
